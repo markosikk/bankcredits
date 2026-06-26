@@ -11,7 +11,7 @@ import java.util.List;
 public class SystemUserDao implements CrudDao<SystemUser> {
     @Override
     public List<SystemUser> findAll() throws SQLException {
-        String sql = "SELECT user_id, login, password_hash, user_role FROM system_users ORDER BY user_id";
+        String sql = "SELECT user_id, login, password_hash, role FROM system_users ORDER BY user_id";
         try (PreparedStatement statement = Database.getInstance().getConnection().prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
             List<SystemUser> users = new ArrayList<>();
@@ -23,7 +23,7 @@ public class SystemUserDao implements CrudDao<SystemUser> {
     }
 
     public SystemUser findByLogin(String login) throws SQLException {
-        String sql = "SELECT user_id, login, password_hash, user_role FROM system_users WHERE login = ?";
+        String sql = "SELECT user_id, login, password_hash, role FROM system_users WHERE login = ?";
         try (PreparedStatement statement = Database.getInstance().getConnection().prepareStatement(sql)) {
             statement.setString(1, login);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -37,7 +37,7 @@ public class SystemUserDao implements CrudDao<SystemUser> {
 
     @Override
     public void insert(SystemUser user) throws SQLException {
-        String sql = "INSERT INTO system_users (login, password_hash, user_role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO system_users (login, password_hash, role) VALUES (?, ?, ?)";
         try (PreparedStatement statement = Database.getInstance().getConnection().prepareStatement(sql)) {
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getPasswordHash());
@@ -48,7 +48,7 @@ public class SystemUserDao implements CrudDao<SystemUser> {
 
     @Override
     public void update(SystemUser user) throws SQLException {
-        String sql = "UPDATE system_users SET login = ?, password_hash = ?, user_role = ? WHERE user_id = ?";
+        String sql = "UPDATE system_users SET login = ?, password_hash = ?, role = ? WHERE user_id = ?";
         try (PreparedStatement statement = Database.getInstance().getConnection().prepareStatement(sql)) {
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getPasswordHash());
@@ -72,7 +72,7 @@ public class SystemUserDao implements CrudDao<SystemUser> {
                 resultSet.getInt("user_id"),
                 resultSet.getString("login"),
                 resultSet.getString("password_hash"),
-                resultSet.getString("user_role")
+                resultSet.getString("role")
         );
     }
 }

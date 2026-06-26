@@ -34,5 +34,4 @@ VALUES
 INSERT INTO system_users
 (login, password_hash, role)
 VALUES
-('admin', 'Admin123!', 'ADMIN'),
-('user', 'User123!', 'USER');
+('admin', 'OcptKOV19KAnAaElmrMKlw==:0/R87fysx9Om0eKne2EP3BSsWUdU3k2pwqcqXV3JZp4=', 'ADMIN');

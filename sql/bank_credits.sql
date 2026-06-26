@@ -78,8 +78,8 @@ CREATE TABLE IF NOT EXISTS system_users (
     user_id INT NOT NULL AUTO_INCREMENT,
     login VARCHAR(50) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    user_role VARCHAR(50) NOT NULL,
+    role VARCHAR(50) NOT NULL,
     PRIMARY KEY (user_id),
     UNIQUE KEY uq_system_users_login (login),
-    CHECK (user_role IN ('ADMIN', 'USER'))
+    CHECK (role IN ('ADMIN', 'USER'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
