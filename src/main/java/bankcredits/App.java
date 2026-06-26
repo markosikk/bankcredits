@@ -5,7 +5,6 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import bankcredits.model.dao.Database;
 import bankcredits.view.LoginView;
-
 public class App extends Application {
     @Override
     public void start(Stage stage) {
@@ -20,7 +19,6 @@ public class App extends Application {
             alert.showAndWait();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
